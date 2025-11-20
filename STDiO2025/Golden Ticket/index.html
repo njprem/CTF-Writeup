@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCC 2026 - License Validator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .info-box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .result.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .result.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .debug-info {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #666;
+            display: none;
+        }
+
+        .debug-info.show {
+            display: block;
+        }
+
+        .debug-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .debug-info pre {
+            background: white;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+
+        .construction-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 50%, #ff6b6b 100%);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            border: 2px dashed #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.4);
+        }
+
+        .construction-banner::before {
+            content: "⚠️ ";
+        }
+
+        .construction-banner::after {
+            content: " ⚠️";
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="construction-banner">UNDER CONSTRUCTION</div>
+        <h1>GCC 2026</h1>
+        <div class="subtitle">License Validation System</div>
+
+        <div class="info-box">
+            <p><strong>Challenge:</strong> Enter a valid license key to proceed.</p>
+            <p><strong>Format:</strong> XXXXXXXX-XXXXXXXX-XXXXXXX</p>
+        </div>
+
+        <div class="input-group">
+            <label for="serial">License Key:</label>
+            <input type="text" id="serial" placeholder="Enter your license key here..."
+                   pattern="[A-Fa-f0-9\-]+" autocomplete="off">
+        </div>
+
+        <button id="validateBtn" onclick="handleValidation()" disabled>Validate License</button>
+
+        <div class="loading" id="loading">
+            <p>Validating...</p>
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <div class="debug-info" id="debugInfo"></div>
+    </div>
+
+    <!-- Load decryptFlag.js first to make decrypt_flag available -->
+    <script src="decryptFlag.js"></script>
+    <!-- Load checker.js to setup Module configuration -->
+    <script src="checker.js"></script>
+    <script>
+        let wasmReady = false;
+
+        // Initialize WASM on page load
+        window.addEventListener('DOMContentLoaded', async () => {
+            console.log('[INFO] Initializing WASM module...');
+
+            // Setup Module configuration first
+            const initPromise = initWasm();
+
+            // Then dynamically load validator.js which will use our Module config
+            const script = document.createElement('script');
+            script.src = 'validator.js';
+            script.onload = async () => {
+                wasmReady = await initPromise;
+
+                if (wasmReady) {
+                    console.log('[INFO] WASM module ready');
+                } else {
+                    showResult('Failed to initialize validation system. Please refresh the page.', false);
+                }
+            };
+            script.onerror = () => {
+                console.error('[ERROR] Failed to load validator.js');
+                showResult('Failed to load validation system. Please refresh the page.', false);
+            };
+            document.head.appendChild(script);
+        });
+
+        // Handle validation button click
+        async function handleValidation() {
+            const serialInput = document.getElementById('serial');
+            const serial = serialInput.value.trim();
+
+            if (!serial) {
+                showResult('Please enter a license key.', false);
+                return;
+            }
+
+            if (!wasmReady) {
+                showResult('Validation system not ready. Please refresh the page.', false);
+                return;
+            }
+
+            // Show loading
+            showLoading(true);
+            hideResult();
+
+            // Small delay to show loading animation
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            try {
+                const flag = await validateSerial(serial);
+
+                if (flag) {
+                    showResult('🎉 License key is VALID!\n\nFlag: ' + flag, true);
+                } else {
+                    showResult('❌ Invalid license key. Please try again.', false);
+                }
+            } catch (error) {
+                console.error('[ERROR] Validation error:', error);
+                showResult('Error during validation. Please try again.', false);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Show result message
+        function showResult(message, success) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.className = 'result ' + (success ? 'success' : 'error') + ' show';
+        }
+
+        // Hide result message
+        function hideResult() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('show');
+        }
+
+        // Show/hide loading indicator
+        function showLoading(show) {
+            const loadingDiv = document.getElementById('loading');
+            if (show) {
+                loadingDiv.classList.add('show');
+            } else {
+                loadingDiv.classList.remove('show');
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('serial').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleValidation();
+            }
+        });
+    </script>
+</body>
+</html>

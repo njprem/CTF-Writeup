@@ -1,0 +1,159 @@
+{
+  "projectVersion": 2,
+  "files": [
+    "cat.apk"
+  ],
+  "treeExpansionsV2": [
+    "c:S.g",
+    "t:JInputs//JInputFiles"
+  ],
+  "codeData": {
+    "comments": [],
+    "renames": []
+  },
+  "openTabs": [
+    {
+      "type": "resource",
+      "tabPath": "AndroidManifest.xml",
+      "subPath": "",
+      "caret": 3202,
+      "view": {
+        "x": 0,
+        "y": 189
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "stdio.cat.MainActivity",
+      "subPath": "java",
+      "caret": 4707,
+      "view": {
+        "x": 0,
+        "y": 546
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "androidx.compose.ui.platform.ComposeView",
+      "subPath": "java",
+      "caret": 2809,
+      "view": {
+        "x": 6,
+        "y": 2
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "S.b",
+      "subPath": "java",
+      "caret": 187,
+      "view": {
+        "x": 0,
+        "y": 0
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "S.a",
+      "subPath": "java",
+      "caret": 3198,
+      "view": {
+        "x": 0,
+        "y": 297
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "S.g",
+      "subPath": "java",
+      "caret": 1748,
+      "view": {
+        "x": 0,
+        "y": 343
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "S.d",
+      "subPath": "java",
+      "caret": 0,
+      "view": {
+        "x": 0,
+        "y": 0
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "S.c",
+      "subPath": "java",
+      "caret": 1819,
+      "view": {
+        "x": 0,
+        "y": 0
+      },
+      "active": true,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    },
+    {
+      "type": "class",
+      "tabPath": "S.f",
+      "subPath": "java",
+      "caret": 708,
+      "view": {
+        "x": 0,
+        "y": 0
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false,
+      "previewTab": false
+    }
+  ],
+  "cacheDir": "/home/kali/.cache/jadx/projects/cat-1bf1e9718f7432a8cc5e2f9f4e755ca5",
+  "enableLiveReload": false,
+  "searchHistory": [
+    "STDIO"
+  ],
+  "searchResourcesFilter": "$TEXT",
+  "searchResourcesSizeLimit": 0,
+  "pluginOptions": {}
+}
