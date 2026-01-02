@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCorp Internal Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>🏢 TechCorp</h1>
+                <p class="tagline">Internal Employee Portal</p>
+            </div>
+        </div>
+
+        <div class="welcome-section">
+            <h2>Welcome to TechCorp Portal</h2>
+            <p>Access your employee dashboard, manage projects, and collaborate with your team.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dashboard</h3>
+                    <p>View your personalized dashboard with key metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h3>Projects</h3>
+                    <p>Access and manage your project portfolio</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Team</h3>
+                    <p>Collaborate with your team members</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Login to Portal</a>
+                <a href="{{ url_for('download_source') }}" class="btn btn-secondary">Download Source Code</a>
+            </div>
+
+            <div class="info-box">
+                <h4>🎯 CTF Challenge Information</h4>
+                <p><strong>Objective:</strong> Gain access to the admin panel and retrieve the flag.</p>
+                <p><strong>Available Credentials:</strong></p>
+                <ul>
+                    <li><code>john.doe / Password123!</code> - Regular User</li>
+                    <li><code>jane.smith / SecurePass456</code> - Regular User</li>
+                </ul>
+                <p><strong>Hint:</strong> Analyze how session tokens are generated. You can download the source code for analysis.</p>
+                <a href="{{ url_for('hint') }}" class="hint-link">Need more hints?</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 SECPlayground. All rights reserved.</p>
+            <p class="challenge-info">CTF Lab: Predictable Session Token Challenge</p>
+        </footer>
+    </div>
+</body>
+</html>

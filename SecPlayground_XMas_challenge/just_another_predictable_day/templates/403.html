@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied - TechCorp Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>🏢 TechCorp</h1>
+                <p class="tagline">Internal Employee Portal</p>
+            </div>
+        </div>
+
+        <div class="error-container">
+            <div class="error-code">403</div>
+            <h2>🚫 Access Denied</h2>
+            <p class="error-message">You do not have permission to access this resource.</p>
+            
+            <div class="error-details">
+                <p>The admin panel is restricted to users with administrative privileges.</p>
+                <p class="hint-text">💡 Hint: Maybe you need to become an admin somehow?</p>
+            </div>
+
+            <div class="error-actions">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+                <a href="{{ url_for('hint') }}" class="btn btn-secondary">Get Hint</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 SECPlayground. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Image Converter - Convert Images Online</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖼️ Free Image Converter</h1>
+            <p class="subtitle">Convert your images to any format - Fast, Free, and Secure!</p>
+        </header>
+
+        <div class="features">
+            <div class="feature">
+                <span class="icon">⚡</span>
+                <h3>Lightning Fast</h3>
+                <p>Convert images in seconds</p>
+            </div>
+            <div class="feature">
+                <span class="icon">🔒</span>
+                <h3>100% Secure</h3>
+                <p>Files deleted after conversion</p>
+            </div>
+            <div class="feature">
+                <span class="icon">🎨</span>
+                <h3>Multiple Formats</h3>
+                <p>Support for all major formats</p>
+            </div>
+        </div>
+
+        <div class="converter-card">
+            <h2>Upload Your Image</h2>
+            
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" name="file" accept=".png,.jpg,.jpeg,.gif,.bmp,.svg,.webp,.tiff" required>
+                    <div class="upload-text">
+                        <span class="upload-icon">📁</span>
+                        <p>Click to select or drag and drop your image</p>
+                        <small>Supported: PNG, JPG, GIF, BMP, SVG, WebP, TIFF (Max 5MB)</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="formatSelect">Convert to:</label>
+                    <select id="formatSelect" name="format" required>
+                        {% for fmt in formats %}
+                        <option value="{{ fmt }}">{{ fmt.upper() }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Convert Image</button>
+            </form>
+
+            <div id="result" class="result"></div>
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Converting your image...</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>How It Works</h2>
+            <ol>
+                <li>Upload your image file (PNG, JPG, SVG, etc.)</li>
+                <li>Select your desired output format</li>
+                <li>Click convert and download your file</li>
+            </ol>
+        </div>
+
+        <div class="tech-section">
+            <h3>Powered by ImageMagick</h3>
+            <p>We use industry-standard ImageMagick for high-quality conversions</p>
+            <a href="/source" class="btn-secondary">📦 Download Source Code</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Free Image Converter. All rights reserved.</p>
+            <p><small>Service Status: <span id="status">Checking...</span></small></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

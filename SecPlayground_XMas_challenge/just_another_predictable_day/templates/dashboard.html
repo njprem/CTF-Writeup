@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TechCorp Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>🏢 TechCorp</h1>
+                <p class="tagline">Internal Employee Portal</p>
+            </div>
+            <div class="user-menu">
+                <span class="username">{{ user.full_name }}</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-small">Logout</a>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <h2>Welcome back, {{ user.full_name }}! 👋</h2>
+                <p class="role-badge badge-{{ user.role }}">{{ user.role|upper }}</p>
+            </div>
+
+            <div class="user-info-card">
+                <h3>👤 Your Profile</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Username:</span>
+                        <span class="value">{{ username }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Full Name:</span>
+                        <span class="value">{{ user.full_name }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Department:</span>
+                        <span class="value">{{ user.department }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email:</span>
+                        <span class="value">{{ user.email }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Role:</span>
+                        <span class="value">{{ user.role }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Login Time:</span>
+                        <span class="value">{{ session_info.login_time }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>My Projects</h3>
+                    <p class="card-value">12</p>
+                    <p class="card-label">Active Projects</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✅</div>
+                    <h3>Tasks</h3>
+                    <p class="card-value">8</p>
+                    <p class="card-label">Pending Tasks</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Team</h3>
+                    <p class="card-value">15</p>
+                    <p class="card-label">Team Members</p>
+                </div>
+            </div>
+
+            {% if user.role == 'admin' %}
+            <div class="admin-notice">
+                <h3>🔐 Admin Access Available</h3>
+                <p>You have administrative privileges.</p>
+                <a href="{{ url_for('admin') }}" class="btn btn-primary">Go to Admin Panel</a>
+            </div>
+            {% else %}
+            <div class="info-notice">
+                <h3>ℹ️ Limited Access</h3>
+                <p>You are logged in as a regular user. Administrative features are not available.</p>
+                <p class="hint-text">💡 The admin panel contains sensitive information. Can you find a way to access it?</p>
+            </div>
+            {% endif %}
+
+            <div class="session-debug">
+                <h4>🔍 Session Information (For Debugging)</h4>
+                <div class="debug-info">
+                    <p><strong>Session Created:</strong> {{ session_info.created_at }}</p>
+                    <p><strong>Login Time:</strong> {{ session_info.login_time }}</p>
+                    <p class="warning-text">⚠️ Note: Session tokens are generated using a deterministic algorithm. Check the source code for implementation details.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 SECPlayground. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TechCorp Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>🏢 TechCorp</h1>
+                <p class="tagline">Internal Employee Portal</p>
+            </div>
+            <div class="user-menu">
+                <span class="username">{{ user.full_name }}</span>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-small">Dashboard</a>
+                <a href="{{ url_for('logout') }}" class="btn btn-small">Logout</a>
+            </div>
+        </div>
+
+        <div class="dashboard admin-panel">
+            <div class="dashboard-header">
+                <h2>🔐 Administrator Control Panel</h2>
+                <p class="role-badge badge-admin">ADMIN ACCESS</p>
+            </div>
+
+            <div class="success-message">
+                <h3>🎉 Congratulations!</h3>
+                <p>You have successfully exploited the predictable session token vulnerability!</p>
+            </div>
+
+            <div class="flag-container">
+                <h3>🚩 Your Flag</h3>
+                <div class="flag-box">
+                    <code>{{ flag }}</code>
+                </div>
+                <p class="flag-description">Submit this flag to complete the challenge.</p>
+            </div>
+
+            <div class="vulnerability-explanation">
+                <h3>🔍 Vulnerability Explained</h3>
+                <div class="vuln-card">
+                    <h4>What went wrong?</h4>
+                    <p>The application generates session tokens using a predictable algorithm:</p>
+                    <div class="code-block">
+                        <code>MD5(username + timestamp)</code>
+                    </div>
+                    <p>This allows attackers to:</p>
+                    <ul>
+                        <li>Predict session tokens if they know the username and approximate login time</li>
+                        <li>Brute force session tokens within a small time window</li>
+                        <li>Hijack other users' sessions, including administrators</li>
+                    </ul>
+                </div>
+
+                <div class="vuln-card">
+                    <h4>How to exploit it?</h4>
+                    <ol>
+                        <li>Login as a regular user (e.g., john.doe or jane.smith)</li>
+                        <li>Download and analyze the source code</li>
+                        <li>Understand the session token generation algorithm</li>
+                        <li>Generate potential session tokens for the 'admin' user</li>
+                        <li>Try tokens within a reasonable time window (±60 seconds)</li>
+                        <li>Access the admin panel with the valid token</li>
+                    </ol>
+                </div>
+
+                <div class="vuln-card mitigation">
+                    <h4>✅ How to fix it?</h4>
+                    <p><strong>Proper Solution:</strong></p>
+                    <ul>
+                        <li>Use cryptographically secure random token generation (e.g., <code>secrets.token_urlsafe()</code>)</li>
+                        <li>Make tokens unpredictable with sufficient entropy (at least 128 bits)</li>
+                        <li>Implement proper session management with expiration</li>
+                        <li>Use secure session libraries (e.g., Flask-Session with server-side storage)</li>
+                        <li>Implement additional security measures (CSRF tokens, IP validation, etc.)</li>
+                    </ul>
+                    
+                    <p><strong>Example of secure token generation:</strong></p>
+                    <div class="code-block">
+                        <code>import secrets<br>
+session_token = secrets.token_urlsafe(32)  # 256 bits of entropy</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-stats">
+                <h3>📊 System Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">{{ total_users }}</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ active_sessions }}</div>
+                        <div class="stat-label">Active Sessions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">MD5</div>
+                        <div class="stat-label">Hash Algorithm</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">WEAK</div>
+                        <div class="stat-label">Security Level</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="references">
+                <h3>📚 References & Further Reading</h3>
+                <ul>
+                    <li><a href="https://owasp.org/www-community/vulnerabilities/Insufficient_Session-ID_Length" target="_blank">OWASP: Insufficient Session-ID Length</a></li>
+                    <li><a href="https://cwe.mitre.org/data/definitions/331.html" target="_blank">CWE-331: Insufficient Entropy</a></li>
+                    <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html" target="_blank">OWASP Session Management Cheat Sheet</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 SECPlayground. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

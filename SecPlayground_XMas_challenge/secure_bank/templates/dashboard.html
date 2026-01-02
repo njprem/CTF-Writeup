@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="balance-card">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="mb-0"><i class="fas fa-wallet me-2"></i>Account Balance</h6>
+                    <span class="badge bg-light text-dark">
+                        {% if session.get('is_admin') %}
+                            <i class="fas fa-crown text-warning me-1"></i>Admin
+                        {% else %}
+                            Standard
+                        {% endif %}
+                    </span>
+                </div>
+                <h2 class="display-5 fw-bold mb-0">${{ "{:,.2f}".format(user['account_balance']) }}</h2>
+                <small class="opacity-75">Available balance</small>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h6 class="mb-3"><i class="fas fa-user me-2"></i>Account Information</h6>
+                    <table class="table table-sm mb-0">
+                        <tr>
+                            <td class="text-muted">Name:</td>
+                            <td>{{ user['full_name'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Email:</td>
+                            <td>{{ user['email'] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Member Since:</td>
+                            <td>{{ user['created_at'][:10] }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Account Type:</td>
+                            <td>
+                                {% if session.get('is_admin') %}
+                                    <span class="badge bg-warning text-dark">Administrator</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">Standard</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-8">
+            {% if flag %}
+            <div class="alert alert-success mb-4">
+                <h5><i class="fas fa-flag me-2"></i>Congratulations! Admin Access Achieved</h5>
+                <hr>
+                <p class="mb-0"><strong>Flag:</strong> <code>{{ flag }}</code></p>
+            </div>
+            {% endif %}
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 col-md-3 mb-3">
+                            <button class="btn btn-outline-primary w-100 py-3" disabled>
+                                <i class="fas fa-paper-plane d-block mb-2 fa-2x"></i>
+                                <small>Transfer</small>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <button class="btn btn-outline-primary w-100 py-3" disabled>
+                                <i class="fas fa-credit-card d-block mb-2 fa-2x"></i>
+                                <small>Pay Bills</small>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <button class="btn btn-outline-primary w-100 py-3" disabled>
+                                <i class="fas fa-chart-line d-block mb-2 fa-2x"></i>
+                                <small>Invest</small>
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3 mb-3">
+                            <button class="btn btn-outline-primary w-100 py-3" disabled>
+                                <i class="fas fa-cog d-block mb-2 fa-2x"></i>
+                                <small>Settings</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-history me-2"></i>Recent Transactions
+                </div>
+                <div class="card-body">
+                    {% if transactions %}
+                        {% for tx in transactions %}
+                        <div class="transaction-item">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong>{{ tx['type'] }}</strong>
+                                    <br><small class="text-muted">{{ tx['description'] or 'No description' }}</small>
+                                </div>
+                                <div class="text-end">
+                                    <span class="{% if tx['amount'] > 0 %}text-success{% else %}text-danger{% endif %}">
+                                        {% if tx['amount'] > 0 %}+{% endif %}${{ "{:,.2f}".format(tx['amount']) }}
+                                    </span>
+                                    <br><small class="text-muted">{{ tx['created_at'][:10] }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted text-center mb-0">
+                            <i class="fas fa-inbox me-2"></i>No transactions yet
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

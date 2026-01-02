@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-4">
+            <i class="fas fa-shield-alt me-3"></i>Welcome to SecureBank
+        </h1>
+        <p class="lead mb-4">Your trusted partner in secure online banking since 1998</p>
+        <a href="{{ url_for('login') }}" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-sign-in-alt me-2"></i>Login to Account
+        </a>
+        <a href="{{ url_for('source_code') }}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-code me-2"></i>Security Audit
+        </a>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h5>Bank-Grade Security</h5>
+                <p class="text-muted">Your data is protected with industry-leading encryption and security measures.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h5>24/7 Access</h5>
+                <p class="text-muted">Access your accounts anytime, anywhere with our secure online platform.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h5>Expert Support</h5>
+                <p class="text-muted">Our dedicated team is here to help you with any questions or concerns.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-bullhorn me-2"></i>Important Notice
+                </div>
+                <div class="card-body">
+                    <a href="{{ url_for('source_code') }}" class="btn btn-primary">
+                        <i class="fas fa-download me-2"></i>Download Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-lg-8 mx-auto">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h6><i class="fas fa-info-circle me-2 text-primary"></i>Demo Accounts</h6>
+                    <p class="mb-1 small">For testing purposes, you can use:</p>
+                    <code>test@securebank.local / test123</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

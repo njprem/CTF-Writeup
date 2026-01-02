@@ -1,0 +1,11 @@
+services:
+  app:
+    image: socredit:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: socredit
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
